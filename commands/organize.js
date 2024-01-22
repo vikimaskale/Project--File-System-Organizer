@@ -9,7 +9,6 @@ let types = {
 }
 
 function organizeFn(dirPath) {
-    // console.log("organize command implemnted for ", dirPath);
     // 1. input -> directory path given
     let destPath;
     if (dirPath == undefined) {
@@ -32,17 +31,15 @@ function organizeFn(dirPath) {
         }
     }
     organizeHelper(dirPath, destPath);
-    // 3. identify categories of all the files present in that input directory  ->
 }
+
 function organizeHelper(src, dest) {
     // 3. identify categories of all the files present in that input directory  ->
     let childNames = fs.readdirSync(src);
-    // console.log(childNames);
     for (let i = 0; i < childNames.length; i++) {
         let childAddress = path.join(src, childNames[i]);
         let isFile = fs.lstatSync(childAddress).isFile();
         if (isFile) {
-            // console.log(childNames[i]);
             let category = getCategory(childNames[i]);
             console.log(childNames[i], "belongs to --> ", category);
             // 4. copy / cut  files to that organized directory inside of any of category folder 
